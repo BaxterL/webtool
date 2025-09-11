@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
+from package import ncm_converter
 
 app = Flask(__name__)
 CORS(app)
@@ -29,8 +30,9 @@ def ncm_to_mp3_endpoint():
 
 
 def ncm_to_mp3(file):
-    # 临时测试用
-    return file
+    ncm_converter.dumpfile(file, '/tmp')
+    mp3_path = '/tmp/' + file.filename.rsplit('.', 1)[0] + '.mp3'
+    return mp3_path
 
 
 if __name__ == '__main__':
