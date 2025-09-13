@@ -1,0 +1,1 @@
+.\src\.venv\Scripts\pip.exe install --force-reinstall pycryptodome

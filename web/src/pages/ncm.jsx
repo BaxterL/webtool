@@ -16,6 +16,7 @@ function handleFile(e) {
     const file = e.target.files[0]
     if (file && file.name.endsWith('.ncm')) {
     }
+    return file;
 }
 
 function handleUpload(){
