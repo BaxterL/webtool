@@ -6,11 +6,6 @@ function LoginTest() {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
 
-    if (!username || !password) {
-        console.error('none');
-        return;
-    }
-
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
     }
@@ -20,6 +15,11 @@ function LoginTest() {
     }
 
     const handleLogin = async (e) => {
+        if (!username || !password) {
+        console.error('none');
+        return;
+        }
+
         console.log(username + ' and ' + password)
         try{
             const response = await fetch('http://127.0.0.1:5000/LoginTest', {
