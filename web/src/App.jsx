@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 // 导入你的页面组件
 import HomePage from './pages/home';
 import NcmPage from './pages/ncm';
-import LoginTest from '.pages/LoginTest';
+import LoginTest from './pages/LoginTest';
 import NotFoundPage from './pages/404'
 import './App.css';
 
