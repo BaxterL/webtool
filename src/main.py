@@ -55,20 +55,25 @@ def ncm_to_mp3(file):
 #     "other": "test"
 # }
 
-@app.route('/loginTest',methods=['POST'])
+@app.route('/LoginTest',methods=['POST'])
 def LoginTest():
+    if request.method == 'OPTIONS':
+        return '', 200
+    
+    print(request.data)
+
     try:
         res = request.get_json()
         req_filed = ['username','password']
         for f in req_filed:
-            if f in res:
+            if f not in res:
                 return jsonify({'code': 2, 'isLogin': False, 'msg': f'缺少字段: {f}'}), 400
     
-        username = res['username']
-        password = res['password']
+        username = res.get('username')
+        password = res.get('password')
         other = res['other']
         if username == "qwer" and password == "123456":
-            return jsonify({'code': 0,'isLogin': True,'msg': "登录成功"}), 400
+            return jsonify({'code': 0,'isLogin': True,'msg': "登录成功"}), 200
         else:
             return jsonify({'code': 1,'isLogin': False,'msg': "登录失败"}), 400
     except Exception as e:

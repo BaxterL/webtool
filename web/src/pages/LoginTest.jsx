@@ -15,9 +15,11 @@ function LoginTest() {
     }
 
     const handleLogin = async (e) => {
+        e.preventDefault();
+
         if (!username || !password) {
-        console.error('none');
-        return;
+            console.error('none');
+            return;
         }
 
         console.log(username + ' and ' + password)
@@ -33,16 +35,16 @@ function LoginTest() {
                     other: "测试"
                 })
             })
+            const res = await response.json();
+
+            if (res.isLogin == 0) {
+                navigate('/')
+            } else {
+                alert(res.msg);
+            }
         }
         catch (error) {
             console.error('Error:', error);
-        }
-        const res = await response.json();
-
-        if (res.isLogin == 0) {
-            navigate('/')
-        } else {
-            alert(res.msg);
         }
     }
 
@@ -54,7 +56,7 @@ function LoginTest() {
                 <input type="text" id="username" value={username} onChange={handleUsernameChange}/>
                 <label htmlFor="password">密码:</label>
                 <input type="password" id="password" value={password} onChange={handlePasswordChange}/>
-                <button type="submit" onClick={handleLogin}>登录</button>
+                <button type="button" onClick={handleLogin}>登录</button>
             </div>
         </div>
     )
