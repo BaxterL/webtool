@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function LoginTest() {
     const navigate = useNavigate(); //???
     const [username,setUsername] = useState('');

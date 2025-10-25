@@ -3,7 +3,7 @@ from flask_cors import CORS
 import os
 import shutil
 import sys
-
+from waitress import serve
 
 app = Flask(__name__)
 CORS(app)
@@ -48,6 +48,34 @@ def ncm_to_mp3(file):
     mp3_path = os.path.join(tmp_dir, file.filename.rsplit('.', 1)[0] + '.mp3')
     return mp3_path
 
+## 学习用 发这个包
+# {
+#     "username": "1234",
+#     "password": "1234",
+#     "other": "test"
+# }
+
+@app.route('/loginTest',methods=['POST'])
+def LoginTest():
+    try:
+        res = request.get_json()
+        req_filed = ['username','password']
+        for f in req_filed:
+            if f in res:
+                return jsonify({'code': 2, 'isLogin': False, 'msg': f'缺少字段: {f}'}), 400
+    
+        username = res['username']
+        password = res['password']
+        other = res['other']
+        if username == "qwer" and password == "123456":
+            return jsonify({'code': 0,'isLogin': True,'msg': "登录成功"}), 400
+        else:
+            return jsonify({'code': 1,'isLogin': False,'msg': "登录失败"}), 400
+    except Exception as e:
+        return jsonify({'code': 666,'isLogin': False,'msg': f"{e}"}), 500
+
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    serve(app, host='0.0.0.0', port=5000)
