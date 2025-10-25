@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 // 导入你的页面组件
 import HomePage from './pages/home';
 import NcmPage from './pages/ncm';
+import LoginTest from '.pages/LoginTest';
 import NotFoundPage from './pages/404'
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
           {/* Link 组件用于导航，不会刷新页面 */}
           <Link to="/" className="linkbox">主页</Link>
           <Link to="/ncm-to-mp3" className="linkbox">NCM转换MP3</Link>
+          <Link to="/loginTest" className="linkbox">登录测试</Link>
         </nav>
 
         {/* Routes 和 Route 组件是路由的核心 */}
@@ -25,6 +27,7 @@ function App() {
           {/* path 指定路径，element 指定要渲染的组件 */}
           {/* 当路径是 '/' 时，渲染 HomePage 组件 */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/loginTest" element={<LoginTest />} />
           {/* 当路径是 '/text-tool' 时，渲染 TextToolPage 组件 */}
           <Route path="/ncm-to-mp3" element={<NcmPage />} />
           {/* 可以添加一个兜底路由，匹配所有未定义的路径，常用于显示404页面 */}
