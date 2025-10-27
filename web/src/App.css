@@ -33,6 +33,34 @@
   }
 }
 
+@media (max-width:768px) {
+  .linkbox {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+  .app-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.app-nav {
+  display: flex;
+  gap: 1px;
+  background-color: #2d3436;
+  padding: 0;
+  border-radius: 8px;
+  margin: 0px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .card {
   padding: 2em;
 }
@@ -55,7 +83,22 @@ nav {
 }
 
 .linkbox {
-  background-color: bisque;
-  border-left: 6px solid #eec35f;
-  border-right: 7px solid #eec35f;
+  color: #f1f1f1;
+  text-decoration: none;
+  padding: 14px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 0 0 auto;
+}
+
+.linkbox:hover {
+  background-color: #636e72;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.linkbox.active {
+  background-color: #0984e3;
+  color: white;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }

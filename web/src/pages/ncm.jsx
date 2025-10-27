@@ -1,8 +1,10 @@
+import './ncm.css';
+
 function ncmPage( ) {
     return (
         <div>
             <h1>NCM 转换工具</h1>
-            <p>支持格式.ncm</p>
+            <p>支持格式(.ncm) 点击转换后请等待几秒</p>
             <input type="file" accept=".ncm" onChange={handleFile} />
             <br />
             <button onClick={handleUpload}>转换</button>
